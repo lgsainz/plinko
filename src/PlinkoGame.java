@@ -4,15 +4,14 @@ public class PlinkoGame {
      * Play a round of Plinko.
      */
     public static void main(String[] args) {
-        String[][] board = generateBoard(5,5);
-         printBoard(board);
-        // dropPin(2);
+        generateBoard(5,5);
+//        dropPin(2);
     }
 
     /**
      * Generate new board of dimensions row x col with alternating L, R.
      */
-    public static String[][] generateBoard(int rows, int cols) {
+    public static void generateBoard(int rows, int cols) {
         String[][] board = new String[rows][cols];
         boolean toggle = true;
 
@@ -27,7 +26,7 @@ public class PlinkoGame {
                 }
             }
         }
-        return board;
+        printBoard(board);
     }
 
     /**
