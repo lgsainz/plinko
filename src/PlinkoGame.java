@@ -48,32 +48,41 @@ public class PlinkoGame {
      * Drop the pin into the board at a given column.
      */
     public void dropChip(String[][] board, int col) {
-        String chip = "o";
         int row = 0;
 
-        System.out.println(board.length);
-
         while (row < board.length) {
-//            System.out.println("before: " + board[row][col] + row);
-
+            // if chip hits a Left pin, move Left (unless you can't)
             if (board[row][col] == "L" && col > 0) {
-                board[row][col] = chip;
+                moveChip(board, row, col);
                 col--;
             }
+            // if chip hits a Right pin, move Right (unless you can't)
             else if (board[row][col] == "R" && col < board[row].length - 1) {
-                board[row][col] = chip;
+                moveChip(board, row, col);
                 col++;
             }
+            // if you can't move left/right, then drop down a row
             else {
-                board[row][col] = chip;
+                moveChip(board, row, col);
             }
-            printBoard(board);
-            System.out.println();
             row++;
-
-//            System.out.println("after: " + board[row][col] + row);
-//            System.out.println(col);
         }
+    }
+
+    /**
+     * Helper method; sets the chip at the current position, and then reverts back to
+     * original value as the chip moves to the next row.
+     */
+    public void moveChip(String[][] board, int row, int col) {
+        String chip = "o";
+        // hold temp value L/R
+        String temp = board[row][col];
+        // set chip
+        board[row][col] = chip;
+        printBoard(board);
+        System.out.println();
+        // revert back to original value
+        board[row][col] = temp;
     }
 
 }
