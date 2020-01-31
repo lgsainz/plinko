@@ -5,18 +5,24 @@ public class PlinkoGame {
      */
     public static void main(String[] args) {
 
-        if (args.length < 2) {
+        if (args.length != 3) {
             System.out.println("Please use the following syntax: java PlinkoGame <row> <col> <start_col>");
+            System.exit(0);
         }
 
-        int row = Integer.parseInt(args[0]);
-        int col = Integer.parseInt(args[1]);
-        int start = Integer.parseInt(args[2]);
+        try {
+            int row = Integer.parseInt(args[0]);
+            int col = Integer.parseInt(args[1]);
+            int start = Integer.parseInt(args[2]);
 
-        PlinkoGame game = new PlinkoGame();
-        String[][] board = game.generateBoard(row, col);
-        game.dropChip(board, start);
-
+            PlinkoGame game = new PlinkoGame();
+            String[][] board = game.generateBoard(row, col);
+            game.dropChip(board, start);
+        }
+        catch (Exception e) {
+            System.out.println("Please use integers as parameters.");
+        }
+        
     }
 
     /**
