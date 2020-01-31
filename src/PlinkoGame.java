@@ -22,7 +22,7 @@ public class PlinkoGame {
         catch (Exception e) {
             System.out.println("Please use integers as parameters.");
         }
-        
+
     }
 
     /**
@@ -61,7 +61,7 @@ public class PlinkoGame {
     }
 
     /**
-     * Drop the pin into the board at a given column.
+     * Drop the chip into the board at a given column.
      */
     public void dropChip(String[][] board, int col) {
         int row = 0;
