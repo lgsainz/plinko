@@ -1,6 +1,6 @@
 ## Plinko!
 
-Choose the size board (row x col) and the starting column where you want to drop the chip.
+Choose the board size (row x col) and the column where you want to drop the chip.
 Run in the console, using the command:
 
 ```bash
