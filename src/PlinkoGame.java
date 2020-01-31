@@ -4,9 +4,19 @@ public class PlinkoGame {
      * Play a round of Plinko.
      */
     public static void main(String[] args) {
+
+        if (args.length < 2) {
+            System.out.println("Please use the following syntax: java PlinkoGame <row> <col> <start_col>");
+        }
+
+        int row = Integer.parseInt(args[0]);
+        int col = Integer.parseInt(args[1]);
+        int start = Integer.parseInt(args[2]);
+
         PlinkoGame game = new PlinkoGame();
-        String[][] board = game.generateBoard(5,5);
-        game.dropChip(board, 1);
+        String[][] board = game.generateBoard(row, col);
+        game.dropChip(board, start);
+
     }
 
     /**
