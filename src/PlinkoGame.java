@@ -6,7 +6,6 @@ public class PlinkoGame {
      * java PlinkoGame row col start_col
      */
     public static void main(String[] args) {
-
         if (args.length != 3) {
             System.out.println("Please use the following syntax: java PlinkoGame <row> <col> <start_col>");
             System.exit(0);
@@ -27,7 +26,6 @@ public class PlinkoGame {
         catch (Exception e) {
             System.out.println("Please use integers as parameters.");
         }
-
     }
 
     /**
