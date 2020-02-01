@@ -2,6 +2,8 @@ public class PlinkoGame {
 
     /**
      * Play a round of Plinko.
+     * Run directly in the console using the following syntax and args:
+     * java PlinkoGame row col start_col
      */
     public static void main(String[] args) {
 
@@ -18,6 +20,9 @@ public class PlinkoGame {
             PlinkoGame game = new PlinkoGame();
             String[][] board = game.generateBoard(row, col);
             game.dropChip(board, start);
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Please choose a column within your range, starting at 1.");
         }
         catch (Exception e) {
             System.out.println("Please use integers as parameters.");
@@ -43,8 +48,8 @@ public class PlinkoGame {
                 }
             }
         }
+        System.out.println("Board: ");
         printBoard(board);
-        System.out.println();
         return board;
     }
 
@@ -58,6 +63,7 @@ public class PlinkoGame {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     /**
@@ -65,17 +71,16 @@ public class PlinkoGame {
      */
     public void dropChip(String[][] board, int col) {
         int row = 0;
+        col--; // decrement column so if user wants the first column, its actually col 0.
 
         while (row < board.length) {
             // if chip hits a Left pin, move Left (unless you can't)
             if (board[row][col] == "L" && col > 0) {
-                moveChip(board, row, col);
-                col--;
+                moveChip(board, row, col--);
             }
             // if chip hits a Right pin, move Right (unless you can't)
             else if (board[row][col] == "R" && col < board[row].length - 1) {
-                moveChip(board, row, col);
-                col++;
+                moveChip(board, row, col++);
             }
             // if you can't move left/right, then drop down a row
             else {
@@ -96,7 +101,6 @@ public class PlinkoGame {
         // set chip
         board[row][col] = chip;
         printBoard(board);
-        System.out.println();
         // revert back to original value
         board[row][col] = temp;
     }
